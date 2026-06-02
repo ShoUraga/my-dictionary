@@ -1,0 +1,9 @@
+# テスト出力（Playwright等）
+test-results/
+
+# macOS
+.DS_Store
+
+# エディタ
+.vscode/
+*.swp

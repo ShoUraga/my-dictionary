@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="400" viewBox="0 0 640 400">
+  <rect width="640" height="400" fill="#6f6e6c"/>
+  <text x="320" y="62" text-anchor="middle"
+    font-family="'Noto Serif JP','Hiragino Mincho ProN',serif" font-size="38" fill="#f4f3f1">オフホワイト</text>
+
+  <!-- 純白（比較用） -->
+  <rect x="78" y="108" width="208" height="168" rx="14" fill="#ffffff"/>
+  <text x="182" y="312" text-anchor="middle" font-family="'Noto Sans JP',sans-serif" font-size="22" fill="#ededed">純白</text>
+  <text x="182" y="340" text-anchor="middle" font-family="'Courier New',monospace" font-size="17" fill="#d6d5d3" letter-spacing="1">#FFFFFF</text>
+
+  <!-- オフホワイト -->
+  <rect x="354" y="108" width="208" height="168" rx="14" fill="#faf9f6"/>
+  <text x="458" y="312" text-anchor="middle" font-family="'Noto Sans JP',sans-serif" font-size="22" fill="#ededed">オフホワイト</text>
+  <text x="458" y="340" text-anchor="middle" font-family="'Courier New',monospace" font-size="17" fill="#d6d5d3" letter-spacing="1">#FAF9F6</text>
+</svg>

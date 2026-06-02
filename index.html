@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="ja" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>マイ辞書</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;700&display=swap" rel="stylesheet">
+
+  <!-- PicoCSS v2.0.6 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2.0.6/css/pico.min.css"
+    integrity="sha384-7P0NVe9LPDbUCAF+fH2R8Egwz1uqNH83Ns/bfJY0fN2XCDBMUI2S9gGzIOIRBKsA" crossorigin="anonymous">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Alpine.js 初期化前のちらつき防止フォールバック -->
+  <div id="loading-fallback">読み込み中...</div>
+
+  <main x-data="dictionary" x-cloak class="container">
+
+    <!-- ヘッダー -->
+    <header class="app-header">
+      <div class="title-block">
+        <h1>マイ辞書</h1>
+        <p class="subtitle">読書で出会った言葉の記録 — <span x-text="entries.length"></span> 語</p>
+      </div>
+    </header>
+
+    <!-- ツールバー：検索・並び替え・単語テスト -->
+    <div class="toolbar">
+      <input type="search" class="search-box" placeholder="単語・読み・意味・タグで検索…"
+        x-model="query" aria-label="検索">
+      <select class="sort-select" x-model="sort" aria-label="並び替え">
+        <option value="newest">新しい順</option>
+        <option value="oldest">古い順</option>
+        <option value="kana">読み順（あいうえお）</option>
+      </select>
+
+      <!-- 単語テスト（独立した quiz コンポーネント。dictionary には手を入れない） -->
+      <div x-data="quiz" x-cloak class="quiz-root">
+        <button class="quiz-launch" type="button" @click="start()" aria-label="単語テストを始める">
+          ✏️ 単語テスト
+          <span class="quiz-badge" x-show="dueCount > 0" x-text="dueCount"></span>
+        </button>
+
+        <!-- テストオーバーレイ -->
+        <div class="quiz-overlay" x-show="open" x-transition.opacity
+          @click="closeQuiz()" style="display:none">
+          <div class="quiz-card" @click.stop>
+            <button class="modal-close" @click="closeQuiz()" aria-label="閉じる">×</button>
+
+            <!-- 開始画面 -->
+            <div class="quiz-screen quiz-start" x-show="screen === 'start'">
+              <h2 class="quiz-title">単語テスト</h2>
+              <template x-if="queue.length > 0">
+                <div class="quiz-start-body">
+                  <p class="quiz-lead">今日は <strong x-text="queue.length"></strong> 語を復習します</p>
+                  <p class="quiz-sub">
+                    <span x-show="queueDue > 0">復習 <span x-text="queueDue"></span> 語</span>
+                    <span x-show="queueNew > 0">／ 新規 <span x-text="queueNew"></span> 語</span>
+                  </p>
+                  <p class="quiz-hint">単語と意味を順番に表示します。表示をタップして答えを見て、思い出せたか自分で採点しましょう。</p>
+                  <button class="quiz-primary" type="button" @click="begin()">はじめる</button>
+                </div>
+              </template>
+              <template x-if="queue.length === 0">
+                <div class="quiz-start-body">
+                  <p class="quiz-lead">今日の復習はありません 🎉</p>
+                  <p class="quiz-sub" x-show="nextReviewInfo">
+                    次回は <strong x-text="fmtMD(nextReviewInfo.date)"></strong> に
+                    <strong x-text="nextReviewInfo.count"></strong> 語
+                  </p>
+                  <p class="quiz-sub" x-show="!nextReviewInfo && newCount === 0">まだ登録された単語がありません。</p>
+                  <button class="quiz-primary outline" type="button" x-show="nextReviewInfo"
+                    @click="practiceAhead()">前倒しで復習する</button>
+                </div>
+              </template>
+            </div>
+
+            <!-- カード画面 -->
+            <div class="quiz-screen quiz-play" x-show="screen === 'card'">
+              <template x-if="current">
+                <div>
+                  <div class="quiz-progress"><span x-text="index + 1"></span> / <span x-text="queue.length"></span></div>
+
+                  <div class="flashcard" :class="{ flipped: showAnswer }" @click="flip()">
+                    <!-- 表面 -->
+                    <div class="flashcard-face front">
+                      <template x-if="current.direction === 'word2meaning'">
+                        <div class="fc-content">
+                          <p class="fc-word" x-text="current.entry.word"></p>
+                          <p class="fc-reading" x-show="current.entry.reading" x-text="current.entry.reading"></p>
+                          <p class="fc-prompt">意味は？</p>
+                        </div>
+                      </template>
+                      <template x-if="current.direction === 'meaning2word'">
+                        <div class="fc-content">
+                          <p class="fc-meaning" x-text="current.entry.shortMeaning"></p>
+                          <p class="fc-pos" x-show="current.entry.partOfSpeech" x-text="current.entry.partOfSpeech"></p>
+                          <p class="fc-prompt">この言葉は？</p>
+                        </div>
+                      </template>
+                      <p class="flip-hint">タップで答えを見る</p>
+                    </div>
+                    <!-- 裏面 -->
+                    <div class="flashcard-face back">
+                      <div class="fc-content">
+                        <p class="fc-word" x-text="current.entry.word"></p>
+                        <p class="fc-reading" x-show="current.entry.reading" x-text="current.entry.reading"></p>
+                        <p class="fc-pos" x-show="current.entry.partOfSpeech" x-text="current.entry.partOfSpeech"></p>
+                        <p class="fc-answer-meaning" x-text="current.entry.meaning"></p>
+                        <ul class="fc-examples" x-show="current.entry.examples && current.entry.examples.length">
+                          <template x-for="(ex, i) in current.entry.examples" :key="i">
+                            <li x-text="ex"></li>
+                          </template>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="grade-buttons" x-show="showAnswer" x-transition.opacity>
+                    <button class="grade again" type="button" @click="grade('again')">× まだ</button>
+                    <button class="grade good" type="button" @click="grade('good')">○ わかった</button>
+                  </div>
+                  <p class="grade-hint" x-show="!showAnswer">思い出してから、カードをタップ</p>
+                </div>
+              </template>
+            </div>
+
+            <!-- サマリー画面 -->
+            <div class="quiz-screen quiz-summary" x-show="screen === 'summary'">
+              <h2 class="quiz-title">おつかれさまでした</h2>
+              <p class="quiz-accuracy"><span x-text="accuracy"></span><span class="pct">%</span></p>
+              <div class="quiz-stat-row">
+                <span>復習した語</span>
+                <strong><span x-text="session.reviewed"></span> 語</strong>
+              </div>
+              <div class="quiz-stat-row">
+                <span>○ わかった ／ × まだ</span>
+                <strong><span x-text="session.good"></span> ／ <span x-text="session.again"></span></strong>
+              </div>
+              <div class="quiz-stat-row" x-show="session.newCount > 0">
+                <span>うち新しく覚えた語</span>
+                <strong><span x-text="session.newCount"></span> 語</strong>
+              </div>
+              <div class="quiz-stat-row" x-show="nextReviewInfo">
+                <span>次回の復習</span>
+                <strong><span x-text="nextReviewInfo && fmtMD(nextReviewInfo.date)"></span> に <span x-text="nextReviewInfo && nextReviewInfo.count"></span> 語</strong>
+              </div>
+              <div class="quiz-summary-actions">
+                <button class="quiz-primary outline" type="button" @click="start()">もう一度</button>
+                <button class="quiz-primary" type="button" @click="closeQuiz()">閉じる</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- タグフィルタ -->
+    <div class="tag-filter" x-show="allTags.length > 0">
+      <template x-for="tag in allTags" :key="tag">
+        <button class="tag-chip" type="button"
+          :class="{ 'active': activeTags.includes(tag) }"
+          @click="toggleTag(tag)"
+          x-text="tag"></button>
+      </template>
+      <button class="tag-chip clear" type="button" x-show="activeTags.length > 0"
+        @click="activeTags = []">× クリア</button>
+    </div>
+
+    <!-- 空状態 -->
+    <template x-if="entries.length === 0">
+      <div class="empty-state">
+        <p class="empty-emoji">📖</p>
+        <p>まだ単語がありません。</p>
+        <p class="empty-hint">本を読みながら「○○ってどういう意味？」と声で質問するか、<code>/dict 単語</code> で追加しましょう。</p>
+      </div>
+    </template>
+
+    <!-- 検索結果0件 -->
+    <template x-if="entries.length > 0 && filtered.length === 0">
+      <div class="empty-state">
+        <p>該当する単語が見つかりませんでした。</p>
+      </div>
+    </template>
+
+    <!-- カード一覧 -->
+    <div class="card-grid">
+      <template x-for="entry in filtered" :key="entry.id">
+        <article class="word-card" @click="openDetail(entry)" tabindex="0"
+          @keydown.enter="openDetail(entry)" @keydown.space.prevent="openDetail(entry)">
+          <div class="card-thumb" x-show="entry.image">
+            <img :src="entry.image" :alt="entry.word" loading="lazy"
+              @error="$el.closest('.card-thumb').style.display='none'">
+          </div>
+          <div class="card-body">
+            <div class="card-word-row">
+              <span class="card-word" x-text="entry.word"></span>
+              <span class="card-reading" x-show="entry.reading" x-text="entry.reading"></span>
+            </div>
+            <p class="card-meaning" x-text="entry.shortMeaning"></p>
+            <div class="card-tags">
+              <template x-for="tag in entry.tags" :key="tag">
+                <span class="mini-tag" x-text="tag"></span>
+              </template>
+            </div>
+            <p class="card-source" x-show="entry.source" x-text="'📚 ' + entry.source"></p>
+          </div>
+        </article>
+      </template>
+    </div>
+
+    <!-- 詳細モーダル -->
+    <div class="modal-overlay" x-show="selected" x-transition.opacity
+      @click="closeDetail()" style="display:none">
+      <div class="modal" @click.stop x-show="selected">
+        <template x-if="selected">
+          <div>
+            <button class="modal-close" @click="closeDetail()" aria-label="閉じる">×</button>
+
+            <div class="modal-head">
+              <h2 class="modal-word" x-text="selected.word"></h2>
+              <span class="modal-reading" x-show="selected.reading" x-text="'（' + selected.reading + '）'"></span>
+              <span class="modal-pos" x-show="selected.partOfSpeech" x-text="selected.partOfSpeech"></span>
+            </div>
+
+            <div class="modal-tags">
+              <template x-for="tag in selected.tags" :key="tag">
+                <span class="mini-tag" x-text="tag"></span>
+              </template>
+            </div>
+
+            <div class="modal-photo" x-show="selected.image">
+              <img :src="selected.image" :alt="selected.word"
+                @error="$el.closest('.modal-photo').style.display='none'">
+              <p class="photo-credit" x-show="selected.imageCredit" x-text="selected.imageCredit"></p>
+            </div>
+
+            <section class="modal-section">
+              <h3>意味</h3>
+              <p x-text="selected.meaning"></p>
+            </section>
+
+            <section class="modal-section" x-show="selected.examples && selected.examples.length > 0">
+              <h3>使用例</h3>
+              <ul class="example-list">
+                <template x-for="(ex, i) in selected.examples" :key="i">
+                  <li x-text="ex"></li>
+                </template>
+              </ul>
+            </section>
+
+            <section class="modal-section trivia" x-show="selected.trivia">
+              <h3>💡 おもしろ雑学</h3>
+              <p x-text="selected.trivia"></p>
+            </section>
+
+            <footer class="modal-foot">
+              <span x-show="selected.source" x-text="'📚 ' + selected.source"></span>
+              <span x-show="selected.addedAt" x-text="'登録: ' + selected.addedAt"></span>
+            </footer>
+          </div>
+        </template>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- データ → SRS → ロジック → Alpine の順で読み込む -->
+  <script src="entries.js"></script>
+  <script src="srs.js"></script>
+  <script src="app.js"></script>
+  <script src="quiz.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.0/dist/cdn.min.js"
+    integrity="sha384-O8NPfezTLQ/sgLfQYBJEnezJLlum9L6KOqHsfIWauzaFfD1TQSuvA4iUpgWGHeuZ" crossorigin="anonymous"></script>
+
+</body>
+</html>

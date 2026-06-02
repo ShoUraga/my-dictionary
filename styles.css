@@ -1,0 +1,440 @@
+/* ===== マイ辞書 — カスタムスタイル ===== */
+
+:root {
+  color-scheme: light;
+  --ink: #2b2622;
+  --ink-soft: #6b6258;
+  --paper: #fbf8f3;
+  --card-bg: #ffffff;
+  --accent: #8a6d3b;        /* 落ち着いた金茶 */
+  --accent-soft: #f0e9dc;
+  --border: #e6ddcf;
+  --chip-bg: #efe9df;
+  --shadow: 0 1px 3px rgba(60, 50, 40, 0.08), 0 6px 18px rgba(60, 50, 40, 0.06);
+}
+
+[x-cloak] { display: none !important; }
+
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 20% -10%, #fff 0%, transparent 40%),
+    var(--paper);
+  margin: 0;
+  padding: 0;
+}
+
+/* 読み込み中フォールバック（Alpine初期化で隠れる） */
+#loading-fallback {
+  position: fixed; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--ink-soft);
+  background: var(--paper);
+  z-index: 1;
+}
+[x-data] { position: relative; z-index: 2; background: transparent; }
+
+.container { max-width: 1080px; margin: 0 auto; padding: 1.5rem 1.25rem 4rem; }
+
+/* ===== ヘッダー ===== */
+.app-header {
+  border-bottom: 2px solid var(--border);
+  padding-bottom: 1rem;
+  margin-bottom: 1.25rem;
+}
+.title-block h1 {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 1.9rem;
+  margin: 0;
+  color: var(--ink);
+  letter-spacing: 0.04em;
+}
+.subtitle { margin: 0.25rem 0 0; color: var(--ink-soft); font-size: 0.9rem; }
+
+/* ===== ツールバー ===== */
+.toolbar {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+.search-box {
+  flex: 1 1 260px;
+  margin: 0;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+.sort-select {
+  flex: 0 0 auto;
+  width: auto;
+  margin: 0;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+/* ===== タグフィルタ ===== */
+.tag-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 1.5rem;
+}
+.tag-chip {
+  font-size: 0.8rem;
+  padding: 0.25rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--card-bg);
+  color: var(--ink-soft);
+  cursor: pointer;
+  margin: 0;
+  width: auto;
+  transition: all 0.15s ease;
+}
+.tag-chip:hover { border-color: var(--accent); color: var(--accent); }
+.tag-chip.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+.tag-chip.clear { color: #b04a3a; border-color: #e7c9c2; }
+
+/* ===== カードグリッド ===== */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1rem;
+}
+.word-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  display: flex;
+  flex-direction: column;
+}
+.word-card:hover, .word-card:focus-visible {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 10px rgba(60,50,40,0.12), 0 12px 28px rgba(60,50,40,0.10);
+  outline: none;
+}
+.card-thumb {
+  width: 100%;
+  height: 150px;
+  background: var(--accent-soft);
+  overflow: hidden;
+}
+.card-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.card-body { padding: 0.85rem 0.95rem 0.9rem; display: flex; flex-direction: column; gap: 0.45rem; }
+.card-word-row { display: flex; align-items: baseline; gap: 0.5rem; flex-wrap: wrap; }
+.card-word {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+.card-reading { font-size: 0.8rem; color: var(--ink-soft); }
+.card-meaning {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--ink);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.card-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+.mini-tag {
+  font-size: 0.7rem;
+  padding: 0.1rem 0.5rem;
+  border-radius: 999px;
+  background: var(--chip-bg);
+  color: var(--accent);
+}
+.card-source {
+  margin: 0.1rem 0 0;
+  font-size: 0.72rem;
+  color: var(--ink-soft);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ===== 空状態 ===== */
+.empty-state {
+  text-align: center;
+  padding: 4rem 1rem;
+  color: var(--ink-soft);
+}
+.empty-emoji { font-size: 3rem; margin: 0; }
+.empty-hint { font-size: 0.9rem; }
+.empty-state code {
+  background: var(--accent-soft);
+  padding: 0.1rem 0.4rem;
+  border-radius: 6px;
+  color: var(--accent);
+}
+
+/* ===== 詳細モーダル ===== */
+.modal-overlay {
+  position: fixed; inset: 0;
+  background: rgba(43, 38, 34, 0.45);
+  backdrop-filter: blur(2px);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 2rem 1rem;
+  overflow-y: auto;
+  z-index: 1000;
+}
+.modal {
+  background: var(--card-bg);
+  border-radius: 16px;
+  max-width: 640px;
+  width: 100%;
+  padding: 1.75rem 1.75rem 1.5rem;
+  position: relative;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.25);
+  margin: auto 0;
+}
+.modal-close {
+  position: absolute;
+  top: 0.6rem; right: 0.8rem;
+  background: none; border: none;
+  font-size: 1.6rem; line-height: 1;
+  color: var(--ink-soft);
+  cursor: pointer; width: auto; padding: 0.2rem 0.4rem;
+}
+.modal-close:hover { color: var(--ink); }
+.modal-head { display: flex; align-items: baseline; gap: 0.5rem; flex-wrap: wrap; padding-right: 2rem; }
+.modal-word { font-family: 'Noto Serif JP', serif; font-size: 1.8rem; margin: 0; }
+.modal-reading { color: var(--ink-soft); font-size: 1rem; }
+.modal-pos {
+  font-size: 0.72rem; color: var(--accent);
+  border: 1px solid var(--accent-soft); background: var(--accent-soft);
+  padding: 0.05rem 0.45rem; border-radius: 6px;
+}
+.modal-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; margin: 0.7rem 0 0; }
+.modal-photo { margin: 1rem 0; text-align: center; }
+.modal-photo img {
+  max-width: 100%;
+  max-height: 340px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+}
+.photo-credit { font-size: 0.7rem; color: var(--ink-soft); margin: 0.3rem 0 0; }
+.modal-section { margin-top: 1.25rem; }
+.modal-section h3 {
+  font-size: 0.85rem;
+  color: var(--accent);
+  margin: 0 0 0.4rem;
+  border-left: 3px solid var(--accent);
+  padding-left: 0.5rem;
+  letter-spacing: 0.04em;
+}
+.modal-section p { margin: 0; line-height: 1.75; }
+.example-list { margin: 0; padding-left: 1.1rem; }
+.example-list li { line-height: 1.7; margin-bottom: 0.3rem; }
+.modal-section.trivia p {
+  background: var(--accent-soft);
+  padding: 0.8rem 1rem;
+  border-radius: 10px;
+  line-height: 1.75;
+}
+.modal-foot {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+}
+
+/* ===== 単語テスト（フラッシュカード） ===== */
+/* 入口ボタン（ツールバー内） */
+.quiz-root { flex: 0 0 auto; display: flex; align-items: center; }
+.quiz-launch {
+  margin: 0; width: auto;
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  border: 1px solid var(--accent);
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.9rem; font-weight: 500;
+  cursor: pointer;
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  white-space: nowrap;
+  transition: all 0.15s ease;
+}
+.quiz-launch:hover { background: #75592f; border-color: #75592f; }
+.quiz-badge {
+  background: #fff; color: var(--accent);
+  font-size: 0.72rem; font-weight: 700;
+  min-width: 1.3rem; height: 1.3rem;
+  padding: 0 0.35rem; border-radius: 999px;
+  display: inline-flex; align-items: center; justify-content: center;
+}
+
+/* オーバーレイ（詳細モーダルを踏襲、最前面） */
+.quiz-overlay {
+  position: fixed; inset: 0;
+  background: rgba(43, 38, 34, 0.5);
+  backdrop-filter: blur(2px);
+  display: flex; align-items: flex-start; justify-content: center;
+  padding: 2rem 1rem; overflow-y: auto;
+  z-index: 1100;
+}
+.quiz-card {
+  background: var(--card-bg);
+  border-radius: 16px;
+  max-width: 520px; width: 100%;
+  padding: 1.75rem;
+  position: relative;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.25);
+  margin: auto 0;
+}
+.quiz-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 1.4rem; margin: 0 0 1rem;
+  text-align: center; color: var(--ink); letter-spacing: 0.04em;
+}
+
+/* 開始画面 */
+.quiz-start { text-align: center; padding: 0.5rem 0 0.2rem; }
+.quiz-lead { font-size: 1.05rem; margin: 0.5rem 0; }
+.quiz-lead strong { color: var(--accent); font-size: 1.3rem; }
+.quiz-sub { color: var(--ink-soft); font-size: 0.9rem; margin: 0.3rem 0; }
+.quiz-sub strong { color: var(--accent); }
+.quiz-hint {
+  color: var(--ink-soft); font-size: 0.82rem; line-height: 1.6;
+  margin: 1rem auto 1.5rem; max-width: 22rem;
+}
+.quiz-primary {
+  width: auto; margin: 0.5rem auto 0;
+  padding: 0.6rem 2rem; border-radius: 10px;
+  border: 1px solid var(--accent);
+  background: var(--accent); color: #fff;
+  font-size: 1rem; font-weight: 500; cursor: pointer;
+  display: inline-block; transition: all 0.15s ease;
+}
+.quiz-primary:hover { background: #75592f; border-color: #75592f; }
+.quiz-primary.outline { background: transparent; color: var(--accent); }
+.quiz-primary.outline:hover { background: var(--accent-soft); }
+
+/* カード画面 */
+.quiz-play { perspective: 1400px; }
+.quiz-progress {
+  text-align: center; color: var(--ink-soft);
+  font-size: 0.85rem; margin-bottom: 0.6rem; letter-spacing: 0.05em;
+}
+.flashcard {
+  position: relative; width: 100%; min-height: 320px;
+  margin: 0 0 0.5rem;
+  transform-style: preserve-3d;
+  transition: transform 0.5s cubic-bezier(.2,.7,.3,1);
+  cursor: pointer;
+}
+.flashcard.flipped { transform: rotateY(180deg); }
+.flashcard-face {
+  position: absolute; inset: 0;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  display: flex; flex-direction: column;
+  align-items: center;
+  padding: 1.5rem;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  background: var(--card-bg);
+  box-shadow: var(--shadow);
+  overflow-y: auto;
+}
+.flashcard-face.front { justify-content: center; }
+.flashcard-face.back {
+  transform: rotateY(180deg);
+  background: var(--accent-soft);
+  justify-content: flex-start;
+}
+.fc-content { width: 100%; text-align: center; }
+.fc-word {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 2rem; font-weight: 700; margin: 0 0 0.3rem; color: var(--ink);
+}
+.fc-reading { font-size: 1rem; color: var(--ink-soft); margin: 0 0 0.4rem; }
+.fc-pos {
+  display: inline-block; font-size: 0.72rem; color: var(--accent);
+  border: 1px solid #e3d6bf; background: rgba(255,255,255,0.6);
+  padding: 0.05rem 0.45rem; border-radius: 6px; margin: 0.2rem 0;
+}
+.fc-meaning {
+  font-size: 1.25rem; line-height: 1.6; margin: 0 0 0.5rem;
+  color: var(--ink); font-weight: 500;
+}
+.fc-prompt { color: var(--ink-soft); font-size: 0.85rem; margin: 0.8rem 0 0; }
+.fc-answer-meaning {
+  font-size: 0.95rem; line-height: 1.7; margin: 0.7rem 0 0;
+  text-align: left; color: var(--ink);
+}
+.fc-examples {
+  text-align: left; margin: 0.8rem 0 0; padding-left: 1.1rem;
+  font-size: 0.88rem; color: var(--ink-soft);
+}
+.fc-examples li { line-height: 1.6; margin-bottom: 0.25rem; }
+.flip-hint {
+  position: absolute; bottom: 0.8rem; left: 0; right: 0;
+  text-align: center; font-size: 0.75rem; color: var(--ink-soft); margin: 0;
+}
+
+/* ○× 採点ボタン */
+.grade-buttons { display: flex; gap: 1rem; margin-top: 0.5rem; }
+.grade {
+  flex: 1; margin: 0; padding: 0.75rem;
+  border-radius: 10px; font-size: 1rem; font-weight: 500;
+  cursor: pointer; border: 1px solid; transition: all 0.15s ease;
+}
+.grade.again { color: #b04a3a; border-color: #e7c9c2; background: #fbf2f0; }
+.grade.again:hover { background: #f5e2dd; }
+.grade.good { color: #fff; border-color: var(--accent); background: var(--accent); }
+.grade.good:hover { background: #75592f; }
+.grade-hint { text-align: center; color: var(--ink-soft); font-size: 0.78rem; margin: 1rem 0 0; }
+
+/* サマリー画面 */
+.quiz-summary { text-align: center; }
+.quiz-accuracy {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 3rem; font-weight: 700; color: var(--accent);
+  margin: 0.3rem 0 1.3rem; line-height: 1;
+}
+.quiz-accuracy .pct { font-size: 1.5rem; margin-left: 0.1rem; }
+.quiz-stat-row {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 0.6rem 0.2rem; border-bottom: 1px solid var(--border);
+  font-size: 0.9rem; color: var(--ink-soft);
+}
+.quiz-stat-row strong { color: var(--ink); font-weight: 700; }
+.quiz-summary-actions { display: flex; gap: 1rem; margin-top: 1.5rem; }
+.quiz-summary-actions .quiz-primary { flex: 1; margin: 0; }
+
+/* ===== レスポンシブ ===== */
+@media (max-width: 520px) {
+  .container { padding: 1rem 0.9rem 3rem; }
+  .title-block h1 { font-size: 1.5rem; }
+  .modal { padding: 1.4rem 1.1rem 1.2rem; }
+  .modal-word { font-size: 1.5rem; }
+  /* 単語テスト */
+  .quiz-card { padding: 1.4rem 1.1rem; }
+  .flashcard { min-height: 290px; }
+  .flashcard-face { padding: 1.2rem; }
+  .fc-word { font-size: 1.6rem; }
+  .fc-meaning { font-size: 1.1rem; }
+  .quiz-launch { padding: 0.45rem 0.7rem; font-size: 0.82rem; }
+}
