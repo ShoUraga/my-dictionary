@@ -23,6 +23,25 @@
  */
 window.DICTIONARY_ENTRIES = [
   {
+    id: "2026-06-02-makuragi",
+    word: "枕木",
+    reading: "まくらぎ",
+    partOfSpeech: "名詞",
+    shortMeaning: "線路でレールを下から支える横木。",
+    meaning: "鉄道の線路で、2本のレールを直角に支える横長の部材。レールを正しい間隔（軌間）に保ちつつ、車両の重さをバラスト（砂利）や路盤に分散して伝える役割を持つ。古くは木製が主流だったが、現在はコンクリート製や合成樹脂（合成まくらぎ）製も広く使われる。役目を終えた木製枕木は、庭の小道や花壇の縁取りなどガーデニング資材として再利用されることも多い。",
+    examples: [
+      "線路の枕木が朽ちてきたので、保線作業員が新しいものに交換した。",
+      "古い枕木を並べて、庭にアプローチの小道を作った。"
+    ],
+    trivia: "名前の由来は、レールを人の頭に見立て、その下に敷く「枕」のような木だから、という説が知られる。英語では地域によって呼び方が違い、イギリスでは「眠る人」になぞらえた railway sleeper（スリーパー）、アメリカではレールを結ぶ意味の railroad tie（タイ）と呼ぶ。",
+    tags: ["鉄道", "専門用語", "道具"],
+    isRealThing: true,
+    image: "https://commons.wikimedia.org/wiki/Special:FilePath/Wooden_railway_ties_at_Hakkila_rail_yard_in_Vantaa,_Finland,_2021.jpg",
+    imageCredit: "Wikimedia Commons / Coen (CC BY-SA 4.0) — File:Wooden railway ties at Hakkila rail yard in Vantaa, Finland, 2021.jpg (https://commons.wikimedia.org/wiki/File:Wooden_railway_ties_at_Hakkila_rail_yard_in_Vantaa,_Finland,_2021.jpg)",
+    source: "死んだら永遠に休めます",
+    addedAt: "2026-06-02"
+  },
+  {
     id: "2026-06-02-odawara",
     word: "小田原",
     reading: "おだわら",
