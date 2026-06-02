@@ -42,22 +42,6 @@ window.DICTIONARY_ENTRIES = [
     addedAt: "2026-06-02"
   },
   {
-    id: "2026-06-02-zz-localize-test",
-    word: "（テスト）画像取り込み確認",
-    reading: "てすと",
-    partOfSpeech: "名詞",
-    shortMeaning: "Action動作確認用の一時エントリ（直後に削除）。",
-    meaning: "GitHub Actionのメディア自動取り込みを検証するための使い捨てエントリ。",
-    examples: [],
-    trivia: "",
-    tags: ["テスト"],
-    isRealThing: true,
-    image: "images/2026-06-02-zz-localize-test.jpg",
-    imageCredit: "Wikimedia Commons / Example.jpg",
-    source: "",
-    addedAt: "2026-06-02"
-  },
-  {
     id: "2026-06-02-casdori",
     word: "キャスドリ",
     reading: "キャスドリ",
