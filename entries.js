@@ -23,6 +23,25 @@
  */
 window.DICTIONARY_ENTRIES = [
   {
+    id: "2026-06-02-odawara",
+    word: "小田原",
+    reading: "おだわら",
+    partOfSpeech: "名詞（地名）",
+    shortMeaning: "神奈川県西部の市。箱根の玄関口で、小田原城の城下町。",
+    meaning: "神奈川県西部、相模湾に面し箱根の山々のふもとに位置する市。戦国時代には北条氏（後北条氏）の本拠地として栄え、その居城・小田原城は関東屈指の堅城として知られた。東海道の宿場町（小田原宿）でもあり、現在は東京から新幹線で約35分の交通の要衝。かまぼこや梅干しの産地としても有名。",
+    examples: [
+      "東京から小田原までは新幹線で約35分だ。",
+      "小田原で乗り換えて箱根の温泉へ向かう。"
+    ],
+    trivia: "難攻不落とされた小田原城を豊臣秀吉が1590年に大軍で包囲した際、城内で和睦か抗戦かの議論が長引いて結論が出なかったことから、いつまでも結論の出ない会議を「小田原評定（おだわらひょうじょう）」と呼ぶようになった。",
+    tags: ["地名", "地理", "歴史"],
+    isRealThing: true,
+    image: "images/odawara.jpg",
+    imageCredit: "小田原城天守。Wikimedia Commons: 161223 Odawara Castle Odawara Japan01s3.jpg (https://commons.wikimedia.org/wiki/File:161223_Odawara_Castle_Odawara_Japan01s3.jpg)",
+    source: "死んだら永遠に休めます",
+    addedAt: "2026-06-02"
+  },
+  {
     id: "2026-06-02-touhonseisou",
     word: "東奔西走",
     reading: "とうほんせいそう",
