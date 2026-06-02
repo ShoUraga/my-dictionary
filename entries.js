@@ -23,6 +23,25 @@
  */
 window.DICTIONARY_ENTRIES = [
   {
+    id: "2026-06-02-sleeveless-knit",
+    word: "ノースリーブニット",
+    reading: "ノースリーブニット（no-sleeve + knit）",
+    partOfSpeech: "名詞",
+    shortMeaning: "袖のない、編み地（ニット）のトップス。",
+    meaning: "袖のないニット（編み物）のトップスのこと。「ノースリーブ（袖なし）」＋「ニット（編み地の衣服）」の組み合わせで、肩や腕を出して着る。一枚で着るほか、シャツやカットソーの上に重ねたり、ニットベストのように使ったりもする。春夏や、空調の効いた室内での着回しに使われることが多い。",
+    examples: [
+      "夏は涼しげなノースリーブニットを一枚で着る。",
+      "ブラウスの上にノースリーブニットを重ねた。"
+    ],
+    trivia: "「ノースリーブ」は英語の no（ない）＋ sleeve（袖）から作られた和製英語で、英語では sleeveless（スリーブレス）と言う。日本では袖の長さを表す言い方として、ノースリーブ／半袖／長袖…と並ぶ定番の語になっている。",
+    tags: ["ファッション", "衣服", "和製英語"],
+    isRealThing: true,
+    image: "images/sleeveless-knit.jpg",
+    imageCredit: "ノースリーブのニット（セーターベスト）の一例。Wikimedia Commons: Tanktop2.jpg (https://commons.wikimedia.org/wiki/File:Tanktop2.jpg)",
+    source: "死んだら永遠に休めます",
+    addedAt: "2026-06-02"
+  },
+  {
     id: "2026-06-02-off-white",
     word: "オフホワイト",
     reading: "オフホワイト（英: off-white）",

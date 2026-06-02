@@ -63,7 +63,8 @@
                   <p class="quiz-lead">今日は <strong x-text="queue.length"></strong> 語を復習します</p>
                   <p class="quiz-sub">
                     <span x-show="queueDue > 0">復習 <span x-text="queueDue"></span> 語</span>
-                    <span x-show="queueNew > 0">／ 新規 <span x-text="queueNew"></span> 語</span>
+                    <span x-show="queueDue > 0 && queueNew > 0">／ </span>
+                    <span x-show="queueNew > 0">新規 <span x-text="queueNew"></span> 語</span>
                   </p>
                   <p class="quiz-hint">単語と意味を順番に表示します。表示をタップして答えを見て、思い出せたか自分で採点しましょう。</p>
                   <button class="quiz-primary" type="button" @click="begin()">はじめる</button>
@@ -73,8 +74,8 @@
                 <div class="quiz-start-body">
                   <p class="quiz-lead">今日の復習はありません 🎉</p>
                   <p class="quiz-sub" x-show="nextReviewInfo">
-                    次回は <strong x-text="fmtMD(nextReviewInfo.date)"></strong> に
-                    <strong x-text="nextReviewInfo.count"></strong> 語
+                    次回は <strong x-text="nextReviewInfo && fmtMD(nextReviewInfo.date)"></strong> に
+                    <strong x-text="nextReviewInfo && nextReviewInfo.count"></strong> 語
                   </p>
                   <p class="quiz-sub" x-show="!nextReviewInfo && newCount === 0">まだ登録された単語がありません。</p>
                   <button class="quiz-primary outline" type="button" x-show="nextReviewInfo"

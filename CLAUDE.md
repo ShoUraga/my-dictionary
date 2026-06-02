@@ -3,6 +3,9 @@
 このフォルダ（`dictionary/`）は、読書中に出会った知らない単語を記録していく個人辞書です。
 ユーザーは**主に音声入力**で質問します。以下のルールに従って動作してください。
 
+このリポジトリは GitHub（`ShoUraga/my-dictionary`）で管理され、**GitHub Pages で公開**されています。スマホのブラウザから次のURLで閲覧できます: **https://shouraga.github.io/my-dictionary/**
+登録フローは、このMac上のClaude Codeでも、スマホ／PCの **claude.ai/code やClaudeアプリ**（同リポジトリに接続）でも実行できます。どちらでもパスは**リポジトリ直下からの相対パス**で統一してください。
+
 ## いつ発動するか
 
 ユーザーが**単語の意味を尋ねる発話**をしたら、雑談ではなく「辞書への登録依頼」とみなして【登録フロー】を実行します。トリガー例:
@@ -44,9 +47,9 @@
 ### 5. 写真（実物があるときだけ）
 植物・動物・道具・料理・地名・建築など**視覚的な実物**なら `isRealThing: true` とし、写真を取得する:
 1. `WebSearch` / `WebFetch` で **Wikipedia / Wikimedia Commons** を中心に、ライセンスが明確な画像URLを1枚特定する。
-2. `Bash` の `curl` で `dictionary/images/<slug>.jpg` にダウンロードする。
+2. `Bash` の `curl` で `images/<slug>.jpg`（リポジトリ直下からの相対パス）にダウンロードする。ローカルMac・クラウドのどちらでも同じパスで動く。
    ```bash
-   curl -L -A "Mozilla/5.0" -o "/Users/oudon/programing/claude-code/dictionary/images/<slug>.jpg" "<画像の直URL>"
+   curl -L -A "Mozilla/5.0" -o "images/<slug>.jpg" "<画像の直URL>"
    ```
    - `<slug>` は単語のローマ字/英語などの半角小文字（例: アケビ→`akebi`、蟲→`mushi`）。
    - ダウンロード後、ファイルサイズが極端に小さくないか（取得失敗でないか）軽く確認する。
@@ -57,7 +60,7 @@
 
 **色名（伝統色など）**は「どんな色か」が重要なので、写真ではなく**色見本（スウォッチ）**を作る:
 - 正確なカラーコード `#xxxxxx` を調べる（和色大辞典 colordic.org などで確認）。
-- `dictionary/images/<slug>.svg` に、その色で塗った矩形＋色名・コードの文字を入れたSVGを生成する。例:
+- `images/<slug>.svg`（リポジトリ直下からの相対パス）に、その色で塗った矩形＋色名・コードの文字を入れたSVGを生成する。例:
   ```svg
   <svg xmlns="http://www.w3.org/2000/svg" width="640" height="400" viewBox="0 0 640 400">
     <rect width="640" height="400" fill="#727171"/>
@@ -75,7 +78,7 @@
 別の本・文脈が発話に含まれていればそちらを優先。既定を使うかどうか判断に迷うときだけ `AskUserQuestion` で「どの本／どんな文脈で見つけましたか？（スキップ可）」と一度だけ軽く尋ねる。スキップなら `source: ""`。
 
 ### 7. 保存（entries.js に追記）
-`dictionary/entries.js` を `Read` し、`window.DICTIONARY_ENTRIES` 配列の**先頭**に新エントリを追加して保存する（`Edit` で `window.DICTIONARY_ENTRIES = [` の直後に挿入するのが安全）。
+`entries.js`（リポジトリ直下）を `Read` し、`window.DICTIONARY_ENTRIES` 配列の**先頭**に新エントリを追加して保存する（`Edit` で `window.DICTIONARY_ENTRIES = [` の直後に挿入するのが安全）。
 
 - **id**: `"<addedAt>-<slug>"`（例: `"2026-06-01-akebi"`）。重複する場合は連番を付ける。
 - **addedAt**: 今日の日付 `"YYYY-MM-DD"`（会話の現在日付を使う）。
@@ -101,12 +104,26 @@
 }
 ```
 
-### 8. 報告
-確定した **単語・読み・簡単な意味** を中心に、音声で聞いても分かるよう簡潔に伝える。
-最後に「辞書ビューを開きますか？」と尋ね、**はい**なら次を実行して開く:
+### 8. GitHubへ反映（コミット＆push）
+このリポジトリは GitHub Pages で公開されているため、**保存した変更（`entries.js`・追加した画像）をコミットして `main` に push する**。push の約1分後にスマホからも見えるPagesサイトにIndexが反映される。
+
 ```bash
-open /Users/oudon/programing/claude-code/dictionary/index.html
+git add -A
+git commit -m "辞書に追加: <単語>"
+git push origin main
 ```
+
+- push が `http2`/`HTTP 400` 系で失敗したら `git config http.version HTTP/1.1` を設定してから再試行する（このリポジトリでは設定済み）。
+- 認証が必要な環境（クラウド）では `gh` の認証情報を使う。push できない事情があるときは、その旨を報告に添える（ローカルのファイルは保存済み）。
+
+### 9. 報告
+確定した **単語・読み・簡単な意味** を中心に、音声で聞いても分かるよう簡潔に伝える。
+最後に「辞書ビューを開きますか？」と尋ね、**はい**なら環境に応じて案内する:
+- **ローカルMac**: 次を実行して開く。
+  ```bash
+  open /Users/oudon/programing/claude-code/dictionary/index.html
+  ```
+- **クラウド／スマホ（claude.ai/code・Claudeアプリ等）**: ローカルの `open` は使えないので、公開URL **https://shouraga.github.io/my-dictionary/** を案内する（push から約1分で反映）。
 
 ## 原則
 - 確認は最小限に。明確な語は確認なしで保存し、報告で内容を見せて後から直せるようにする。
