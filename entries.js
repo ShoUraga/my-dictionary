@@ -23,6 +23,25 @@
  */
 window.DICTIONARY_ENTRIES = [
   {
+    id: "2026-06-02-studs",
+    word: "スタッズ",
+    reading: "スタッズ（英: studs）",
+    partOfSpeech: "名詞",
+    shortMeaning: "革製品や衣服に飾りで打ち込む、金属の小さな鋲（びょう）。",
+    meaning: "バッグ・靴・ベルト・ジャケットなどに装飾として打ち込む、金属製の小さな鋲（びょう）のこと。半球形やピラミッド型、円錐（スパイク）型などがあり、表面に並べて付けることで、ロックやパンク、ワイルドな雰囲気を演出する。多くは複数形「スタッズ」で使われる。",
+    examples: [
+      "スタッズが並んだ黒い革ジャンを羽織る。",
+      "ベルトにスタッズをあしらってアクセントにした。"
+    ],
+    trivia: "英語 stud はもともと「飾り鋲・びょう」を指す語で、複数並ぶことから日本では複数形の「スタッズ」で定着した。元は馬具や軍装の補強・装飾に使われた金具で、1970年代のパンク・ロックファッションでトゲ状のスタッズが流行し、反抗の象徴的なアイコンになった。",
+    tags: ["ファッション", "装飾", "外来語"],
+    isRealThing: true,
+    image: "images/studs.jpg",
+    imageCredit: "Wikimedia Commons: Studded Belts.jpg (https://commons.wikimedia.org/wiki/File:Studded_Belts.jpg)",
+    source: "死んだら永遠に休めます",
+    addedAt: "2026-06-02"
+  },
+  {
     id: "2026-06-02-celtic-music",
     word: "ケルト音楽",
     reading: "ケルトおんがく",

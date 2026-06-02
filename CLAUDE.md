@@ -47,14 +47,15 @@
 ### 5. 写真（実物があるときだけ）
 植物・動物・道具・料理・地名・建築など**視覚的な実物**なら `isRealThing: true` とし、写真を取得する:
 1. `WebSearch` / `WebFetch` で **Wikipedia / Wikimedia Commons** を中心に、ライセンスが明確な画像URLを1枚特定する。
-2. `Bash` の `curl` で `images/<slug>.jpg`（リポジトリ直下からの相対パス）にダウンロードする。ローカルMac・クラウドのどちらでも同じパスで動く。
+2. **まずダウンロードを試みる**。`Bash` の `curl` で `images/<slug>.jpg`（リポジトリ直下からの相対パス）に保存する。
    ```bash
    curl -L -A "Mozilla/5.0" -o "images/<slug>.jpg" "<画像の直URL>"
    ```
    - `<slug>` は単語のローマ字/英語などの半角小文字（例: アケビ→`akebi`、蟲→`mushi`）。
    - ダウンロード後、ファイルサイズが極端に小さくないか（取得失敗でないか）軽く確認する。
-3. `image` に `"images/<slug>.jpg"`、`imageCredit` に出典（例: `"Wikimedia Commons / 撮影者名 (URL)"`）を記録する。
-4. 適切な画像が見つからなければ `image: null`、`imageCredit: ""` とする。
+   - 成功したら `image` に `"images/<slug>.jpg"` を入れる。
+3. **ダウンロードがネットワーク制限でブロックされる環境（クラウド版Claude／claude.ai/code のサンドボックス）では、`curl` せず画像の直URLをそのまま `image` に入れる**（例: `image: "https://upload.wikimedia.org/.../akebi.jpg"`）。ビューアは `<img :src>` でホットリンク表示できるため即見えるし、push すると GitHub Action（`.github/workflows/localize-media.yml`）が自動で `images/<id>.jpg` に取り込み相対パスへ書き換える。**curlがブロックされたら無理に粘らず、この方式に切り替える。**
+4. `imageCredit` には出典（例: `"Wikimedia Commons / 撮影者名 (URL)"`）を**どちらの場合も必ず**記録する。適切な画像が見つからなければ `image: null`、`imageCredit: ""` とする。
 
 概念・抽象語（例: 形而上学・逢魔が時）は `isRealThing: false`、`image: null` とし、写真検索はスキップする。
 
@@ -81,6 +82,7 @@
    ```
 4. `audio` に `"audio/<slug>.mp3"`、`audioCredit` に「出典・作者・ライセンス・元URL（抜粋した旨も）」を記録する。
 5. 音が関係ない語は `audio` フィールド自体を省略してよい（ビューアは音が無ければプレーヤーを表示しない）。
+6. **クラウド版（ffmpeg やネットワークが使えない環境）では音声処理は無理をせず、`audio` を省略して登録する**（音は後でMac側から足す）。画像と違い iOS Safari は MP3 が必須で変換が要るため、ホットリンクでの代用はしない。
 
 ### 6. 出典
 発話に本のタイトル・文脈が含まれていればそれを `source` に入れる。

@@ -1,0 +1,48 @@
+name: メディア取り込み (localize media)
+
+# entries.js に「リモートURL」のまま入った画像/音声を、リポジトリ内へ
+# ダウンロードして相対パスに書き換える。クラウド版Claudeはサンドボックスの
+# ネットワーク制限でダウンロードできないため、URLだけ記録してpush →
+# ネットワーク制限のない Actions ランナーがここで取り込む。
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'entries.js'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: localize-media
+  cancel-in-progress: false
+
+jobs:
+  localize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: リモートメディアを取り込み
+        run: node scripts/localize-media.js
+
+      - name: 取り込んだファイルをコミット
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add -A
+            git commit -m "メディアをリポジトリに取り込み (localize media) [skip ci]"
+            git push origin main
+            echo "✅ メディアを取り込んで push しました。"
+          else
+            echo "取り込むリモートメディアはありませんでした。"
+          fi
