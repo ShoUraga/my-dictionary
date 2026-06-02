@@ -33,7 +33,7 @@ window.DICTIONARY_ENTRIES = [
     trivia: "",
     tags: ["テスト"],
     isRealThing: true,
-    image: "https://upload.wikimedia.org/wikipedia/commons/a/a9/Example.jpg",
+    image: "images/2026-06-02-zz-localize-test.jpg",
     imageCredit: "Wikimedia Commons / Example.jpg",
     source: "",
     addedAt: "2026-06-02"
