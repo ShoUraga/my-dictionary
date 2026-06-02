@@ -70,6 +70,18 @@
   ```
 - `isRealThing: true`、`image: "images/<slug>.svg"`、`imageCredit: "色見本（<色名> #xxxxxx / 出典)"` とする。文字色は背景色に対して読める明度にする。
 
+### 5b. 音（音で示すと分かりやすい語）
+音楽ジャンル・楽器・鳴き声・効果音など、**音が特徴の語**は代表的な音を `audio` に登録できる:
+1. `WebSearch` / `WebFetch` で Wikimedia Commons の**自由ライセンス（パブリックドメイン or CC）**の音源を1つ特定する（CC BY なら作者名を必ず控える）。
+2. `curl -L`（`Special:FilePath/<ファイル名>` 経由が簡単）で元ファイルを `/tmp` に取得する（webm 動画や ogg が多い）。
+3. `ffmpeg` で**代表的な約20〜30秒**を MP3 に変換して `audio/<slug>.mp3`（リポジトリ直下からの相対パス）に保存する（iOS Safari でも再生できるよう必ず MP3）。例:
+   ```bash
+   ffmpeg -y -ss 3 -i /tmp/in.webm -t 30 -vn -af "afade=t=out:st=28:d=2" -acodec libmp3lame -q:a 5 -ac 2 \
+     /Users/oudon/programing/claude-code/dictionary/audio/<slug>.mp3
+   ```
+4. `audio` に `"audio/<slug>.mp3"`、`audioCredit` に「出典・作者・ライセンス・元URL（抜粋した旨も）」を記録する。
+5. 音が関係ない語は `audio` フィールド自体を省略してよい（ビューアは音が無ければプレーヤーを表示しない）。
+
 ### 6. 出典
 発話に本のタイトル・文脈が含まれていればそれを `source` に入れる。
 
@@ -105,6 +117,8 @@ git pull --rebase origin main
   isRealThing: true,
   image: "images/akebi.jpg",  // なければ null
   imageCredit: "Wikimedia Commons / … (URL)",  // なければ ""
+  audio: "audio/<slug>.mp3",  // 音があるときだけ。なければ省略可
+  audioCredit: "作者 / ライセンス (URL)",  // 同上（CC BYは作者表示必須）
   source: "風の谷のナウシカ",   // なければ ""
   addedAt: "2026-06-01"
 }

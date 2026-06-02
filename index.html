@@ -103,7 +103,6 @@
                       <template x-if="current.direction === 'meaning2word'">
                         <div class="fc-content">
                           <p class="fc-meaning" x-text="current.entry.shortMeaning"></p>
-                          <p class="fc-pos" x-show="current.entry.partOfSpeech" x-text="current.entry.partOfSpeech"></p>
                           <p class="fc-prompt">この言葉は？</p>
                         </div>
                       </template>
@@ -115,6 +114,11 @@
                         <p class="fc-word" x-text="current.entry.word"></p>
                         <p class="fc-reading" x-show="current.entry.reading" x-text="current.entry.reading"></p>
                         <p class="fc-pos" x-show="current.entry.partOfSpeech" x-text="current.entry.partOfSpeech"></p>
+                        <div class="fc-photo" x-show="current.entry.image">
+                          <img :src="current.entry.image" :alt="current.entry.word"
+                            @error="$el.closest('.fc-photo').style.display='none'">
+                          <p class="fc-photo-credit" x-show="current.entry.imageCredit" x-text="current.entry.imageCredit"></p>
+                        </div>
                         <p class="fc-answer-meaning" x-text="current.entry.meaning"></p>
                         <ul class="fc-examples" x-show="current.entry.examples && current.entry.examples.length">
                           <template x-for="(ex, i) in current.entry.examples" :key="i">
@@ -206,6 +210,7 @@
             <div class="card-word-row">
               <span class="card-word" x-text="entry.word"></span>
               <span class="card-reading" x-show="entry.reading" x-text="entry.reading"></span>
+              <span class="card-audio-badge" x-show="entry.audio" title="音あり">🔊</span>
             </div>
             <p class="card-meaning" x-text="entry.shortMeaning"></p>
             <div class="card-tags">
@@ -244,6 +249,12 @@
                 @error="$el.closest('.modal-photo').style.display='none'">
               <p class="photo-credit" x-show="selected.imageCredit" x-text="selected.imageCredit"></p>
             </div>
+
+            <section class="modal-section modal-audio" x-show="selected.audio">
+              <h3>🔊 代表的な音・曲調</h3>
+              <audio class="audio-player" controls preload="none" :src="selected.audio"></audio>
+              <p class="audio-credit" x-show="selected.audioCredit" x-text="selected.audioCredit"></p>
+            </section>
 
             <section class="modal-section">
               <h3>意味</h3>

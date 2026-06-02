@@ -38,6 +38,8 @@ window.DICTIONARY_ENTRIES = [
     isRealThing: false,
     image: null,
     imageCredit: "",
+    audio: "audio/celtic-music.mp3",
+    audioCredit: "代表的な曲調の一例: アイリッシュ・ジグ「Swallowtail Jig」より約30秒。演奏: Katy Adelson（CC BY 3.0）／ Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Swallowtail_Jig_-_Irish_Fiddle_Tune!.webm)",
     source: "死んだら永遠に休めます",
     addedAt: "2026-06-02"
   },
