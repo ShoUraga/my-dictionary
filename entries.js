@@ -36,7 +36,7 @@ window.DICTIONARY_ENTRIES = [
     trivia: "名前の由来は、レールを人の頭に見立て、その下に敷く「枕」のような木だから、という説が知られる。英語では地域によって呼び方が違い、イギリスでは「眠る人」になぞらえた railway sleeper（スリーパー）、アメリカではレールを結ぶ意味の railroad tie（タイ）と呼ぶ。",
     tags: ["鉄道", "専門用語", "道具"],
     isRealThing: true,
-    image: "https://commons.wikimedia.org/wiki/Special:FilePath/Wooden_railway_ties_at_Hakkila_rail_yard_in_Vantaa,_Finland,_2021.jpg",
+    image: "images/2026-06-02-makuragi.jpg",
     imageCredit: "Wikimedia Commons / Coen (CC BY-SA 4.0) — File:Wooden railway ties at Hakkila rail yard in Vantaa, Finland, 2021.jpg (https://commons.wikimedia.org/wiki/File:Wooden_railway_ties_at_Hakkila_rail_yard_in_Vantaa,_Finland,_2021.jpg)",
     source: "死んだら永遠に休めます",
     addedAt: "2026-06-02"
