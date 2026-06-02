@@ -23,6 +23,63 @@
  */
 window.DICTIONARY_ENTRIES = [
   {
+    id: "2026-06-02-celtic-music",
+    word: "ケルト音楽",
+    reading: "ケルトおんがく",
+    partOfSpeech: "名詞",
+    shortMeaning: "アイルランドやスコットランドなど、ケルト文化圏に伝わる民族音楽。",
+    meaning: "アイルランド、スコットランド、ウェールズ、ブルターニュ（フランス北西部）など、ケルト系の文化圏に伝わる伝統音楽の総称。フィドル（バイオリン）、ティン・ホイッスル、バグパイプ、アイリッシュ・ハープ、バウロン（太鼓）などを用い、軽快な舞曲（ジグやリール）や、もの哀しく叙情的な旋律が特徴。近年は伝統に現代的なアレンジを加えた曲も広く親しまれている。",
+    examples: [
+      "パブで生演奏のケルト音楽に合わせて足を踏み鳴らした。",
+      "映画のサントラに、もの哀しいケルト音楽が流れた。"
+    ],
+    trivia: "アイルランドの象徴であるアイリッシュ・ハープ（ケルティック・ハープ）は、国の紋章やギネスビールのロゴにも使われている。ケルト音楽の代表的な舞曲「ジグ」と「リール」は拍子（リズム）が異なり、いずれもダンスと深く結びついて発展した。",
+    tags: ["音楽", "文化", "外来語"],
+    isRealThing: false,
+    image: null,
+    imageCredit: "",
+    source: "死んだら永遠に休めます",
+    addedAt: "2026-06-02"
+  },
+  {
+    id: "2026-06-02-wall-shelf",
+    word: "ウォールシェルフ",
+    reading: "ウォールシェルフ（英: wall shelf）",
+    partOfSpeech: "名詞",
+    shortMeaning: "壁に取り付けて使う棚。床に置かず壁面を収納・飾り棚にする。",
+    meaning: "壁に直接取り付けて使う棚のこと。床に脚を置かず壁面を利用するため、省スペースで部屋を広く使える。本や小物の収納だけでなく、観葉植物や写真などを飾るディスプレイ用途にも使われる。支えが見えないタイプは「フローティングシェルフ（浮き棚）」とも呼ばれる。",
+    examples: [
+      "壁にウォールシェルフを付けて、お気に入りの本を並べている。",
+      "ウォールシェルフに小さな観葉植物を飾った。"
+    ],
+    trivia: "「ウォール（wall＝壁）」＋「シェルフ（shelf＝棚）」の組み合わせ。支柱や脚を見せず壁から生えているように見せる「フローティング（浮遊）シェルフ」は、金具を壁の内部や棚板の中に隠して取り付けることで、すっきりした見た目を実現している。",
+    tags: ["インテリア", "家具", "外来語"],
+    isRealThing: true,
+    image: "images/wall-shelf.jpg",
+    imageCredit: "Wikimedia Commons: Office attic remodel with floating bookshelves.jpg (https://commons.wikimedia.org/wiki/File:Office_attic_remodel_with_floating_bookshelves.jpg)",
+    source: "死んだら永遠に休めます",
+    addedAt: "2026-06-02"
+  },
+  {
+    id: "2026-06-02-maxi-chiffon-skirt",
+    word: "マキシ丈シフォンスカート",
+    reading: "マキシたけシフォンスカート",
+    partOfSpeech: "名詞",
+    shortMeaning: "足首〜床近くまで長い、シフォン地（薄く透ける軽い生地）のスカート。",
+    meaning: "「マキシ丈（足首〜床に届くほど長い丈）」の「シフォン（薄くて透け感のある軽やかな生地）」でできたスカート。ふんわり揺れるドレープが出て、涼しげで女性らしい印象になる。春夏のコーディネートに使われることが多い。",
+    examples: [
+      "夏は風になびくマキシ丈シフォンスカートが涼しげで人気だ。",
+      "マキシ丈シフォンスカートにスニーカーを合わせて軽快にまとめた。"
+    ],
+    trivia: "「マキシ」は最大を表す maximum に由来する丈の呼び名で、短い順にミニ＜ひざ丈＜ミモレ（ミディ）＜マキシ と長くなる。「シフォン」はフランス語で『薄い布・ぼろ布』を意味する chiffon が語源で、ふわふわ軽いシフォンケーキも、この生地の質感になぞらえた名前。",
+    tags: ["ファッション", "衣服", "外来語"],
+    isRealThing: true,
+    image: "images/maxi-skirt.jpg",
+    imageCredit: "マキシ丈スカートの一例（丈・シルエットの参考。素材はリバティプリント）。Wikimedia Commons: 1970s maxi skirt in Liberty print (https://commons.wikimedia.org/wiki/File:1970s_maxi_skirt_in_Liberty_print,_with_tooled_leather_shoulder_bag_and_black_T-shirt.jpg)",
+    source: "死んだら永遠に休めます",
+    addedAt: "2026-06-02"
+  },
+  {
     id: "2026-06-02-sleeveless-knit",
     word: "ノースリーブニット",
     reading: "ノースリーブニット（no-sleeve + knit）",

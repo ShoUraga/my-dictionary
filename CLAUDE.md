@@ -78,7 +78,13 @@
 別の本・文脈が発話に含まれていればそちらを優先。既定を使うかどうか判断に迷うときだけ `AskUserQuestion` で「どの本／どんな文脈で見つけましたか？（スキップ可）」と一度だけ軽く尋ねる。スキップなら `source: ""`。
 
 ### 7. 保存（entries.js に追記）
-`entries.js`（リポジトリ直下）を `Read` し、`window.DICTIONARY_ENTRIES` 配列の**先頭**に新エントリを追加して保存する（`Edit` で `window.DICTIONARY_ENTRIES = [` の直後に挿入するのが安全）。
+**まず最新へ同期する**。スマホ・PCの両方から登録するため、編集前に最新の `main` を取り込んでおくとコンフリクトをほぼ防げる。git管理下なら編集の前に実行:
+```bash
+git pull --rebase origin main
+```
+（クラウドのセッションは最新mainから始まるので基本不要だが、実行しても害はない。）
+
+そのうえで `entries.js`（リポジトリ直下）を `Read` し、`window.DICTIONARY_ENTRIES` 配列の**先頭**に新エントリを追加して保存する（`Edit` で `window.DICTIONARY_ENTRIES = [` の直後に挿入するのが安全）。
 
 - **id**: `"<addedAt>-<slug>"`（例: `"2026-06-01-akebi"`）。重複する場合は連番を付ける。
 - **addedAt**: 今日の日付 `"YYYY-MM-DD"`（会話の現在日付を使う）。
@@ -114,6 +120,9 @@ git push origin main
 ```
 
 - push が `http2`/`HTTP 400` 系で失敗したら `git config http.version HTTP/1.1` を設定してから再試行する（このリポジトリでは設定済み）。
+- **push が non-fast-forward（remoteが先に進んでいる）で拒否されたら**、`git pull --rebase origin main` してから push し直す。
+  - `entries.js` でコンフリクトが出た場合は、原因は「スマホ側とPC側が同じ配列先頭にそれぞれ別の単語を追加した」だけ。**どちらの新エントリも消さず両方残す**: `<<<<<<<` / `=======` / `>>>>>>>` のマーカーを外し、両方のエントリ・オブジェクトを配列内にカンマ区切りで並べる（idが重複していたら連番で区別）。
+  - 解決したら `git add entries.js && git rebase --continue` → `git push origin main`。**データは絶対に捨てない**。
 - 認証が必要な環境（クラウド）では `gh` の認証情報を使う。push できない事情があるときは、その旨を報告に添える（ローカルのファイルは保存済み）。
 
 ### 9. 報告
