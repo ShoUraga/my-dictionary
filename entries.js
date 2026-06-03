@@ -36,7 +36,7 @@ window.DICTIONARY_ENTRIES = [
     trivia: "「カモミール（chamomile）」の語源はギリシャ語で「地面のりんご」（chamai＝地面 ＋ mēlon＝りんご）。りんごのような香りに由来する。スペイン語では「マンサニージャ（manzanilla＝小さなりんご）」と呼ばれ、同名のシェリー酒もある。",
     tags: ["植物", "ハーブ", "外来語"],
     isRealThing: true,
-    image: "https://commons.wikimedia.org/wiki/Special:FilePath/Kamomillasaunio%20(Matricaria%20recutita).JPG",
+    image: "images/2026-06-03-chamomile.jpg",
     imageCredit: "Wikimedia Commons / kallerna (CC BY-SA 3.0) — File:Kamomillasaunio (Matricaria recutita).JPG (https://commons.wikimedia.org/wiki/File:Kamomillasaunio_(Matricaria_recutita).JPG)",
     source: "死んだら永遠に休めます",
     addedAt: "2026-06-03"
