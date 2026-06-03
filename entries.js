@@ -36,7 +36,7 @@ window.DICTIONARY_ENTRIES = [
     trivia: "「数寄（すき）」は和歌・茶の湯・生け花といった風流を好むこと（＝「好き」）を意味し、「数寄屋」はもともと茶室を指す言葉。書院造の格式をあえて崩して自由に建てたことから「好みのままに造った家」とも解される。桂離宮はその簡素で洗練された美しさから、ドイツの建築家ブルーノ・タウトが絶賛したことでも知られる。",
     tags: ["建築", "歴史", "文化"],
     isRealThing: true,
-    image: "https://commons.wikimedia.org/wiki/Special:FilePath/Geppa-ro.jpg",
+    image: "images/2026-06-03-sukiya-zukuri.jpg",
     imageCredit: "桂離宮・月波楼（数寄屋造りの茶屋建築）。Wikimedia Commons: Geppa-ro.jpg (https://commons.wikimedia.org/wiki/File:Geppa-ro.jpg)",
     source: "死んだら永遠に休めます",
     addedAt: "2026-06-03"
