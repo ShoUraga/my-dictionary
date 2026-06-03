@@ -23,6 +23,25 @@
  */
 window.DICTIONARY_ENTRIES = [
   {
+    id: "2026-06-03-chamomile",
+    word: "カモミール",
+    reading: "カモミール（英: chamomile）",
+    partOfSpeech: "名詞",
+    shortMeaning: "りんごのような甘い香りがする、白い花のハーブ。ハーブティーで有名。",
+    meaning: "キク科のハーブで、白い花びらと黄色い中心を持つ小さな花を咲かせ、りんごに似た甘い香りがする。乾燥させた花はハーブティーとして広く飲まれ、リラックスや安眠を助けるとされる。代表的なのは一年草の「ジャーマンカモミール」と、多年草でグラウンドカバーにも使われる「ローマンカモミール」。和名は「カミツレ」。",
+    examples: [
+      "寝る前にカモミールティーを飲んで、ほっと一息ついた。",
+      "庭のカモミールが甘い香りを漂わせている。"
+    ],
+    trivia: "「カモミール（chamomile）」の語源はギリシャ語で「地面のりんご」（chamai＝地面 ＋ mēlon＝りんご）。りんごのような香りに由来する。スペイン語では「マンサニージャ（manzanilla＝小さなりんご）」と呼ばれ、同名のシェリー酒もある。",
+    tags: ["植物", "ハーブ", "外来語"],
+    isRealThing: true,
+    image: "https://commons.wikimedia.org/wiki/Special:FilePath/Kamomillasaunio%20(Matricaria%20recutita).JPG",
+    imageCredit: "Wikimedia Commons / kallerna (CC BY-SA 3.0) — File:Kamomillasaunio (Matricaria recutita).JPG (https://commons.wikimedia.org/wiki/File:Kamomillasaunio_(Matricaria_recutita).JPG)",
+    source: "死んだら永遠に休めます",
+    addedAt: "2026-06-03"
+  },
+  {
     id: "2026-06-03-kaburi-wo-furu",
     word: "かぶりを振る",
     reading: "かぶりをふる",
