@@ -36,7 +36,7 @@ window.DICTIONARY_ENTRIES = [
     trivia: "子牛の時期に地元特産の「足柄茶」を飲ませて育てるのが特徴で、お茶のカテキンがストレスやアレルギーを抑え、健康な成牛に育つのに役立つとされる。黒毛和牛とホルスタインの交雑種（F1）ならではの、霜降りと赤身のバランスの良さが魅力。",
     tags: ["食べ物", "ブランド牛", "地名"],
     isRealThing: true,
-    image: "https://commons.wikimedia.org/wiki/Special:FilePath/Wagyu%20beef%20marbling%20detail.jpg",
+    image: "images/2026-06-03-ashigaragyu.jpg",
     imageCredit: "霜降り和牛の代表画像（足柄牛そのものではありません）。Wikimedia Commons: Wagyu beef marbling detail.jpg (https://commons.wikimedia.org/wiki/File:Wagyu_beef_marbling_detail.jpg)",
     source: "死んだら永遠に休めます",
     addedAt: "2026-06-03"
