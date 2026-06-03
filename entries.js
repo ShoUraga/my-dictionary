@@ -23,6 +23,25 @@
  */
 window.DICTIONARY_ENTRIES = [
   {
+    id: "2026-06-03-sukiya-zukuri",
+    word: "数寄屋造り",
+    reading: "すきやづくり",
+    partOfSpeech: "名詞（建築様式）",
+    shortMeaning: "茶室の意匠を取り入れた、簡素で洗練された日本建築の様式。",
+    meaning: "茶室（数寄屋）の趣を住宅や別荘などに取り入れた、日本建築の様式。格式ばった書院造に対し、丸太や竹、土壁などの自然素材を生かして装飾を抑えた、簡素で軽やかな造りが特徴。茶の湯の精神を映した「わび・さび」の美意識を体現し、京都の桂離宮がその代表例として知られる。現代でも料亭や和風旅館、住宅に受け継がれている。",
+    examples: [
+      "その老舗料亭は、柱に丸太を使った数寄屋造りだった。",
+      "数寄屋造りの離れで、庭を眺めながらお茶をいただいた。"
+    ],
+    trivia: "「数寄（すき）」は和歌・茶の湯・生け花といった風流を好むこと（＝「好き」）を意味し、「数寄屋」はもともと茶室を指す言葉。書院造の格式をあえて崩して自由に建てたことから「好みのままに造った家」とも解される。桂離宮はその簡素で洗練された美しさから、ドイツの建築家ブルーノ・タウトが絶賛したことでも知られる。",
+    tags: ["建築", "歴史", "文化"],
+    isRealThing: true,
+    image: "https://commons.wikimedia.org/wiki/Special:FilePath/Geppa-ro.jpg",
+    imageCredit: "桂離宮・月波楼（数寄屋造りの茶屋建築）。Wikimedia Commons: Geppa-ro.jpg (https://commons.wikimedia.org/wiki/File:Geppa-ro.jpg)",
+    source: "死んだら永遠に休めます",
+    addedAt: "2026-06-03"
+  },
+  {
     id: "2026-06-03-chamomile",
     word: "カモミール",
     reading: "カモミール（英: chamomile）",
