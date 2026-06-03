@@ -23,6 +23,25 @@
  */
 window.DICTIONARY_ENTRIES = [
   {
+    id: "2026-06-03-ashigaragyu",
+    word: "足柄牛",
+    reading: "あしがらぎゅう",
+    partOfSpeech: "名詞（ブランド牛）",
+    shortMeaning: "神奈川県西部・足柄地域で育てられるブランド牛。",
+    meaning: "神奈川県西部の足柄地域（南足柄・小田原・秦野など県西エリア）で肥育されるブランド牛。黒毛和種とホルスタイン種を掛け合わせた交雑種（F1）が中心で、丹沢山系のミネラル豊富な湧き水と、地元特産の足柄茶などを与えて育てられる。和牛のくどさを抑えた上質な脂と、やわらかい肉質・深いコクが特徴。2004年に「かながわブランド」として認定された。",
+    examples: [
+      "小田原のレストランで足柄牛のステーキを味わった。",
+      "ふるさと納税の返礼品に、足柄牛のすき焼き用肉を選んだ。"
+    ],
+    trivia: "子牛の時期に地元特産の「足柄茶」を飲ませて育てるのが特徴で、お茶のカテキンがストレスやアレルギーを抑え、健康な成牛に育つのに役立つとされる。黒毛和牛とホルスタインの交雑種（F1）ならではの、霜降りと赤身のバランスの良さが魅力。",
+    tags: ["食べ物", "ブランド牛", "地名"],
+    isRealThing: true,
+    image: "https://commons.wikimedia.org/wiki/Special:FilePath/Wagyu%20beef%20marbling%20detail.jpg",
+    imageCredit: "霜降り和牛の代表画像（足柄牛そのものではありません）。Wikimedia Commons: Wagyu beef marbling detail.jpg (https://commons.wikimedia.org/wiki/File:Wagyu_beef_marbling_detail.jpg)",
+    source: "死んだら永遠に休めます",
+    addedAt: "2026-06-03"
+  },
+  {
     id: "2026-06-03-semishigure",
     word: "蝉しぐれ",
     reading: "せみしぐれ",
