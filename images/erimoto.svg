@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="560" viewBox="0 0 640 560">
+  <rect width="640" height="560" fill="#f7f5f1"/>
+  <text x="320" y="56" text-anchor="middle" font-family="'Noto Sans JP','Hiragino Sans',sans-serif" font-size="44" font-weight="bold" fill="#2d3748">襟元（えりもと）</text>
+  <text x="320" y="96" text-anchor="middle" font-family="'Noto Sans JP','Hiragino Sans',sans-serif" font-size="22" fill="#718096">衣服の襟のあたり・首まわりの部分</text>
+  <!-- shirt silhouette -->
+  <path d="M260,190 Q320,235 380,190 L430,180 L520,230 L520,310 L450,295 L440,500 L200,500 L190,295 L120,310 L120,230 L210,180 Z"
+        fill="#dfe6ec" stroke="#4a5568" stroke-width="4" stroke-linejoin="round"/>
+  <!-- highlighted neckline -->
+  <ellipse cx="320" cy="205" rx="80" ry="50" fill="#e8563f" fill-opacity="0.22" stroke="#e8563f" stroke-width="5"/>
+  <!-- leader to label -->
+  <line x1="396" y1="178" x2="475" y2="138" stroke="#c0392b" stroke-width="3"/>
+  <circle cx="396" cy="178" r="5" fill="#c0392b"/>
+  <text x="482" y="146" font-family="'Noto Sans JP','Hiragino Sans',sans-serif" font-size="26" font-weight="bold" fill="#c0392b">ここ</text>
+</svg>
