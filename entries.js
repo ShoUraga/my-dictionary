@@ -23,6 +23,25 @@
  */
 window.DICTIONARY_ENTRIES = [
   {
+    id: "2026-06-03-peter-the-great",
+    word: "ピョートル大帝",
+    reading: "ピョートルたいてい（英: Peter the Great）",
+    partOfSpeech: "名詞（人名）",
+    shortMeaning: "ロシアを近代化・西欧化した、ロシア帝国初代皇帝。",
+    meaning: "ロシア・ロマノフ朝の皇帝（在位1682〜1725年）。本名ピョートル1世。自ら西欧へ視察に赴き、軍事・行政・産業・文化を大規模に西欧化（近代化）した。北方戦争でスウェーデンに勝ち、バルト海に面した新都サンクトペテルブルクを築いて、ロシアを大国「ロシア帝国」へと押し上げた。改革の資金を得るために数多くの税を導入したことでも知られる。",
+    examples: [
+      "ピョートル大帝は、ロシアを西欧化し強国へと導いた。",
+      "ピョートル大帝が築いた都が、サンクトペテルブルクだ。"
+    ],
+    trivia: "税の歴史で有名なのが、西欧風の身だしなみを広めるために導入した「髭税（ひげぜい）」。あごひげを生やしたい者は税を払い、納税の証として「税は払った」と刻んだ銅製のトークン（髭札）を持ち歩かねばならなかった。ほかにも帽子・長靴・浴場など、あらゆるものに課税したと伝わる。2メートルを超える長身でも知られる。",
+    tags: ["歴史", "人物", "ロシア"],
+    isRealThing: true,
+    image: "https://commons.wikimedia.org/wiki/Special:FilePath/Peter%20I%20by%20Kneller.jpg",
+    imageCredit: "ピョートル1世の肖像（ゴッドフリー・ネラー作, 1698年, パブリックドメイン）。Wikimedia Commons: Peter I by Kneller.jpg (https://commons.wikimedia.org/wiki/File:Peter_I_by_Kneller.jpg)",
+    source: "課税と脱税の経済史",
+    addedAt: "2026-06-03"
+  },
+  {
     id: "2026-06-03-jintouzei",
     word: "人頭税",
     reading: "じんとうぜい",
