@@ -36,7 +36,7 @@ window.DICTIONARY_ENTRIES = [
     trivia: "税の歴史で有名なのが1898年の「家屋税戦争（Hut Tax War）」。イギリスは小屋1軒につき年5〜10シリングの税を課したが、現地の人々には「自分の家を持つだけで金を取られる」理不尽なものと受け止められ、24人の首長が反対の請願を出したのちバイ・ブレを中心に武装蜂起へ発展した。首都フリータウン（Freetown＝自由の町）の名は、解放奴隷の移住地という成り立ちに由来する。",
     tags: ["歴史", "アフリカ", "税"],
     isRealThing: true,
-    image: "https://commons.wikimedia.org/wiki/Special:FilePath/Bai%20Bureh%20(1898).jpg",
+    image: "images/2026-06-03-colonial-sierra-leone.jpg",
     imageCredit: "家屋税戦争を率いたバイ・ブレ（1898年、捕虜時の写真。撮影: Arthur Greer中尉, パブリックドメイン）。Wikimedia Commons: Bai Bureh (1898).jpg (https://commons.wikimedia.org/wiki/File:Bai_Bureh_(1898).jpg)",
     source: "課税と脱税の経済史",
     addedAt: "2026-06-03"
