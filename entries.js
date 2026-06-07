@@ -23,6 +23,25 @@
  */
 window.DICTIONARY_ENTRIES = [
   {
+    id: "2026-06-03-magna-carta",
+    word: "マグナ・カルタ",
+    reading: "マグナ・カルタ（羅: Magna Carta／大憲章）",
+    partOfSpeech: "名詞（歴史）",
+    shortMeaning: "1215年、イギリス王の権力を法で制限した文書。「大憲章」と訳される。",
+    meaning: "1215年、イングランド王ジョンが貴族たちの要求を受け入れて認めた文書。「大憲章」と訳される。重税や恣意的な統治に反発した貴族が王に迫り、国王といえども法に従うべきこと、不当な課税や逮捕を制限することを定めた。とくに「王国の一般評議会の同意なしに税を課さない」とする条項は、後の「代表なくして課税なし」の理念や、議会政治・立憲主義の源流とされる。",
+    examples: [
+      "マグナ・カルタは、王の権力を法で縛った最初の一歩とされる。",
+      "「代表なくして課税なし」の理念は、マグナ・カルタにさかのぼる。"
+    ],
+    trivia: "税の歴史で重要なのが、マグナ・カルタが「貴族の同意なしに王が税（軍役代納金スキュテージなど）を課してはならない」と定めた点。これは『課税には被治者の同意が要る』という考えの出発点となり、後のイギリス議会や、アメリカ独立革命のスローガン「代表なくして課税なし（No taxation without representation）」へとつながった。原本は羊皮紙に鉄ゴール酸インクで書かれ、1215年版は4部が現存する。",
+    tags: ["歴史", "政治", "税"],
+    isRealThing: true,
+    image: "https://commons.wikimedia.org/wiki/Special:FilePath/Magna%20Carta%20(British%20Library%20Cotton%20MS%20Augustus%20II.106).jpg",
+    imageCredit: "マグナ・カルタ1215年の原本（大英図書館蔵 Cotton MS Augustus II.106, パブリックドメイン）。Wikimedia Commons: Magna Carta (British Library Cotton MS Augustus II.106).jpg (https://commons.wikimedia.org/wiki/File:Magna_Carta_(British_Library_Cotton_MS_Augustus_II.106).jpg)",
+    source: "課税と脱税の経済史",
+    addedAt: "2026-06-03"
+  },
+  {
     id: "2026-06-03-colonial-sierra-leone",
     word: "植民地時代のシエラレオネ",
     reading: "しょくみんちじだいのシエラレオネ",
