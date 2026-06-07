@@ -23,6 +23,44 @@
  */
 window.DICTIONARY_ENTRIES = [
   {
+    id: "2026-06-03-herodotus",
+    word: "ヘロドトス",
+    reading: "ヘロドトス（英: Herodotus）",
+    partOfSpeech: "名詞（人名）",
+    shortMeaning: "古代ギリシャの歴史家。「歴史の父」と呼ばれる。",
+    meaning: "紀元前5世紀の古代ギリシャの歴史家。代表作『歴史（ヒストリアイ）』で、ペルシア戦争を中心に各地の風俗・地理・伝承を幅広く記録し、出来事の原因を探ろうとした。物語的な逸話も多く含むが、過去を体系的に記述した最初期の人物として、後にローマの政治家キケロから「歴史の父」と呼ばれた。エジプトなど各地を旅し、当時の税制や社会についても書き残している。",
+    examples: [
+      "ヘロドトスの『歴史』は、古代世界を知る貴重な史料だ。",
+      "ヘロドトスは「歴史の父」と呼ばれている。"
+    ],
+    trivia: "「歴史」を意味する英語 history は、ヘロドトスの著書の原題ギリシャ語「ヒストリアイ（historíai＝探究・調査）」に由来する。彼はエジプトで古代の徴税や貢納の仕組みについても記録しており、税の歴史をたどる重要な手がかりを残している。",
+    tags: ["歴史", "人物", "古代ギリシャ"],
+    isRealThing: true,
+    image: "https://commons.wikimedia.org/wiki/Special:FilePath/Bust%20of%20Herodotus%20in%20Palazzo%20Massimo%20(Rome).JPG",
+    imageCredit: "ヘロドトスの胸像（ローマ・パラッツォ・マッシモ蔵）。Wikimedia Commons (CC BY-SA 4.0): Bust of Herodotus in Palazzo Massimo (Rome).JPG (https://commons.wikimedia.org/wiki/File:Bust_of_Herodotus_in_Palazzo_Massimo_(Rome).JPG)",
+    source: "課税と脱税の経済史",
+    addedAt: "2026-06-03"
+  },
+  {
+    id: "2026-06-03-caligula",
+    word: "カリグラ帝",
+    reading: "カリグラてい（羅: Caligula）",
+    partOfSpeech: "名詞（人名）",
+    shortMeaning: "暴君として知られる、古代ローマ第3代皇帝。",
+    meaning: "古代ローマ帝国の第3代皇帝（在位37〜41年）。本名はガイウス。即位当初は民衆に歓迎されたが、やがて浪費と専制で知られる暴君となり、財政難を補うために食料・訴訟・売春などへ次々に新税を課したことで有名。最後は親衛隊に暗殺された。残虐な逸話や奇行が多く伝えられ、後世に暴君の代名詞とされる。",
+    examples: [
+      "カリグラ帝は、奇抜な新税を次々に課したことで知られる。",
+      "暴君カリグラ帝は、即位からわずか4年ほどで暗殺された。"
+    ],
+    trivia: "「カリグラ（Caligula）」は本名ではなくあだ名で、ラテン語で「小さな軍靴（カリガ caliga）」の意味。幼少期に父の軍営で小さな軍靴を履いていたことから兵士に愛称で呼ばれた。税の歴史では、彼が新しい税法をわざと細かい字で人目につきにくい高い場所に掲示し、内容を知らずに違反した者から罰金を取った、という逸話が伝わる。",
+    tags: ["歴史", "人物", "古代ローマ"],
+    isRealThing: true,
+    image: "https://commons.wikimedia.org/wiki/Special:FilePath/Caligula%20-%20MET%20-%2014.37.jpg",
+    imageCredit: "カリグラ帝の大理石胸像（メトロポリタン美術館蔵 14.37）。Wikimedia Commons: Caligula - MET - 14.37.jpg (https://commons.wikimedia.org/wiki/File:Caligula_-_MET_-_14.37.jpg)",
+    source: "課税と脱税の経済史",
+    addedAt: "2026-06-03"
+  },
+  {
     id: "2026-06-03-ancien-regime",
     word: "アンシャン・レジーム",
     reading: "アンシャン・レジーム（仏: Ancien Régime）",
