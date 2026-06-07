@@ -36,7 +36,7 @@ window.DICTIONARY_ENTRIES = [
     trivia: "税の歴史で重要なのが、マグナ・カルタが「貴族の同意なしに王が税（軍役代納金スキュテージなど）を課してはならない」と定めた点。これは『課税には被治者の同意が要る』という考えの出発点となり、後のイギリス議会や、アメリカ独立革命のスローガン「代表なくして課税なし（No taxation without representation）」へとつながった。原本は羊皮紙に鉄ゴール酸インクで書かれ、1215年版は4部が現存する。",
     tags: ["歴史", "政治", "税"],
     isRealThing: true,
-    image: "https://commons.wikimedia.org/wiki/Special:FilePath/Magna%20Carta%20(British%20Library%20Cotton%20MS%20Augustus%20II.106).jpg",
+    image: "images/2026-06-03-magna-carta.jpg",
     imageCredit: "マグナ・カルタ1215年の原本（大英図書館蔵 Cotton MS Augustus II.106, パブリックドメイン）。Wikimedia Commons: Magna Carta (British Library Cotton MS Augustus II.106).jpg (https://commons.wikimedia.org/wiki/File:Magna_Carta_(British_Library_Cotton_MS_Augustus_II.106).jpg)",
     source: "課税と脱税の経済史",
     addedAt: "2026-06-03"
