@@ -36,7 +36,7 @@ window.DICTIONARY_ENTRIES = [
     trivia: "「歴史」を意味する英語 history は、ヘロドトスの著書の原題ギリシャ語「ヒストリアイ（historíai＝探究・調査）」に由来する。彼はエジプトで古代の徴税や貢納の仕組みについても記録しており、税の歴史をたどる重要な手がかりを残している。",
     tags: ["歴史", "人物", "古代ギリシャ"],
     isRealThing: true,
-    image: "https://commons.wikimedia.org/wiki/Special:FilePath/Bust%20of%20Herodotus%20in%20Palazzo%20Massimo%20(Rome).JPG",
+    image: "images/2026-06-03-herodotus.jpg",
     imageCredit: "ヘロドトスの胸像（ローマ・パラッツォ・マッシモ蔵）。Wikimedia Commons (CC BY-SA 4.0): Bust of Herodotus in Palazzo Massimo (Rome).JPG (https://commons.wikimedia.org/wiki/File:Bust_of_Herodotus_in_Palazzo_Massimo_(Rome).JPG)",
     source: "課税と脱税の経済史",
     addedAt: "2026-06-03"
@@ -55,7 +55,7 @@ window.DICTIONARY_ENTRIES = [
     trivia: "「カリグラ（Caligula）」は本名ではなくあだ名で、ラテン語で「小さな軍靴（カリガ caliga）」の意味。幼少期に父の軍営で小さな軍靴を履いていたことから兵士に愛称で呼ばれた。税の歴史では、彼が新しい税法をわざと細かい字で人目につきにくい高い場所に掲示し、内容を知らずに違反した者から罰金を取った、という逸話が伝わる。",
     tags: ["歴史", "人物", "古代ローマ"],
     isRealThing: true,
-    image: "https://commons.wikimedia.org/wiki/Special:FilePath/Caligula%20-%20MET%20-%2014.37.jpg",
+    image: "images/2026-06-03-caligula.jpg",
     imageCredit: "カリグラ帝の大理石胸像（メトロポリタン美術館蔵 14.37）。Wikimedia Commons: Caligula - MET - 14.37.jpg (https://commons.wikimedia.org/wiki/File:Caligula_-_MET_-_14.37.jpg)",
     source: "課税と脱税の経済史",
     addedAt: "2026-06-03"
