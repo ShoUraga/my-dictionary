@@ -36,7 +36,7 @@ window.DICTIONARY_ENTRIES = [
     trivia: "税の歴史で有名なのが、西欧風の身だしなみを広めるために導入した「髭税（ひげぜい）」。あごひげを生やしたい者は税を払い、納税の証として「税は払った」と刻んだ銅製のトークン（髭札）を持ち歩かねばならなかった。ほかにも帽子・長靴・浴場など、あらゆるものに課税したと伝わる。2メートルを超える長身でも知られる。",
     tags: ["歴史", "人物", "ロシア"],
     isRealThing: true,
-    image: "https://commons.wikimedia.org/wiki/Special:FilePath/Peter%20I%20by%20Kneller.jpg",
+    image: "images/2026-06-03-peter-the-great.jpg",
     imageCredit: "ピョートル1世の肖像（ゴッドフリー・ネラー作, 1698年, パブリックドメイン）。Wikimedia Commons: Peter I by Kneller.jpg (https://commons.wikimedia.org/wiki/File:Peter_I_by_Kneller.jpg)",
     source: "課税と脱税の経済史",
     addedAt: "2026-06-03"
